@@ -1,0 +1,38 @@
+<featureGenerators cache="true" name="nameFinder">
+  <generator class="opennlp.tools.util.featuregen.WindowFeatureGeneratorFactory">
+    <int name="prevLength">2</int>
+    <int name="nextLength">2</int>
+    <generator class="opennlp.tools.util.featuregen.TokenClassFeatureGeneratorFactory"/>
+  </generator>
+  <generator class="opennlp.tools.util.featuregen.WindowFeatureGeneratorFactory">
+    <int name="prevLength">2</int>
+    <int name="nextLength">2</int>
+    <generator class="opennlp.tools.util.featuregen.TokenFeatureGeneratorFactory"/>
+  </generator>
+  <generator class="opennlp.tools.util.featuregen.DefinitionFeatureGeneratorFactory"/>
+  <generator class="opennlp.tools.util.featuregen.PreviousMapFeatureGeneratorFactory"/>
+  <generator class="opennlp.tools.util.featuregen.BigramNameFeatureGeneratorFactory"/>
+  <generator class="opennlp.tools.util.featuregen.SentenceFeatureGeneratorFactory">
+    <bool name="begin">true</bool>
+    <bool name="end">false</bool>
+  </generator>
+  <generator class="opennlp.tools.util.featuregen.WindowFeatureGeneratorFactory">
+    <int name="prevLength">2</int>
+    <int name="nextLength">2</int>
+    <generator class="opennlp.tools.util.featuregen.BrownClusterTokenClassFeatureGeneratorFactory">
+      <str name="dict">brownCluster</str>
+    </generator>
+  </generator>
+  <generator class="opennlp.tools.util.featuregen.BrownClusterTokenFeatureGeneratorFactory">
+    <str name="dict">brownCluster</str>
+  </generator>
+  <generator class="opennlp.tools.util.featuregen.BrownClusterBigramFeatureGeneratorFactory">
+    <str name="dict">brownCluster</str>
+  </generator>
+  <generator class="opennlp.tools.util.featuregen.WordClusterFeatureGeneratorFactory">
+    <str name="dict">word2vec.cluster</str>
+  </generator>
+  <generator class="opennlp.tools.util.featuregen.WordClusterFeatureGeneratorFactory">
+    <str name="dict">clark.cluster</str>
+  </generator>
+</featureGenerators>

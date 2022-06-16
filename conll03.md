@@ -34,7 +34,7 @@ You will see output like `Execution time: 0.136 seconds` for both commands.
 
 ### Train and Evaluate the Model
 
-Now train the model.
+Now train the model with default parameters and default features.
 
 ```
 apache-opennlp-2.0.0/bin/opennlp TokenNameFinderTrainer -model en_ner_person.bin \
