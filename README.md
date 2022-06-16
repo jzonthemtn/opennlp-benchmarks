@@ -6,6 +6,9 @@ The purpose of this repository is to provide examples of how to train and evalua
 
 These model training and evaluation scripts do not require GPUs.
 
+For more information on the commands contained in these files, refer to the [Apache OpenNLP documentation](https://opennlp.apache.org/docs/2.0.0/manual/opennlp.html) for the current version.
+
+## Evaluations
+
 * [CoNLL03](https://github.com/jzonthemtn/opennlp-benchmarks/blob/main/conll03.md)
 
-For more information on the commands contained in these files, refer to the [Apache OpenNLP documentation](https://opennlp.apache.org/docs/2.0.0/manual/opennlp.html) for the current version.
