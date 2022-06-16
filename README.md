@@ -1,4 +1,4 @@
-# Apache OpenNLP Benchmarks
+# Apache OpenNLP Benchmarks and Examples
 
 This repository is an unofficial collection of steps and benchmarks for Apache OpenNLP on data sets for common NLP tasks.
 
