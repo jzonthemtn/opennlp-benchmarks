@@ -35,6 +35,12 @@ cat negative.txt positive.txt > training.txt
 
 The `training.txt` file should have 25,000 lines (reviews).
 
+Now do the same for the test data:
+
+awk '{print "negative\t" $0}' ./aclImdb/test/neg/*.txt > negative.txt
+awk '{print "negative\t" $0}' ./aclImdb/test/pos/*.txt > positive.txt
+cat negative.txt positive.txt > test.txt
+
 ## Train a Document Classification Model
 
 Download and extract Apache OpenNLP:
@@ -94,15 +100,15 @@ apache-opennlp-2.0.0/bin/opennlp DoccatEvaluator -model reviews.bin -data test.t
 The output will be similar to:
 
 ```
-Loading Document Categorizer model ... done (0.088s)
-current: 18383.8 doc/s avg: 18383.8 doc/s total: 18860 doc
+Loading Document Categorizer model ... done (0.089s)
+current: 16943.2 doc/s avg: 16943.2 doc/s total: 17356 doc
 
 
-Average: 20178.4 doc/s 
+Average: 19143.2 doc/s 
 Total: 25001 doc
-Runtime: 1.239s
+Runtime: 1.306s
 
-Accuracy: 0.93772
+Accuracy: 0.5308
 Number of documents: 25000
-Execution time: 1.379 seconds
+Execution time: 1.447 seconds
 ```
