@@ -21,11 +21,13 @@ unzip conll2003.zip
 Convert the ConLL03 train and test data to OpenNLP's format:
 
 ```
-apache-opennlp-2.0.0/bin/opennlp TokenNameFinderConverter conll03 -lang eng -types per -data train.txt > corpus_train.txt
+apache-opennlp-2.0.0/bin/opennlp TokenNameFinderConverter conll03 -lang eng \
+	-types per -data train.txt > corpus_train.txt
 ```
 
 ```
-apache-opennlp-2.0.0/bin/opennlp TokenNameFinderConverter conll03 -lang eng -types per -data test.txt > corpus_test.txt
+apache-opennlp-2.0.0/bin/opennlp TokenNameFinderConverter conll03 -lang eng \
+	-types per -data test.txt > corpus_test.txt
 ```
 
 You will see output like `Execution time: 0.136 seconds` for both commands.
@@ -35,7 +37,8 @@ You will see output like `Execution time: 0.136 seconds` for both commands.
 Now train the model.
 
 ```
-apache-opennlp-2.0.0/bin/opennlp TokenNameFinderTrainer -model en_ner_person.bin -lang eng -data corpus_train.txt -nameTypes person
+apache-opennlp-2.0.0/bin/opennlp TokenNameFinderTrainer -model en_ner_person.bin \
+	-lang eng -data corpus_train.txt -nameTypes person
 ```
 
 You will see output like:
@@ -87,7 +90,8 @@ Execution time: 9.972 seconds
 Now evaluate the model:
 
 ```
-apache-opennlp-2.0.0/bin/opennlp TokenNameFinderEvaluator -model en_ner_person.bin -data corpus_test.txt -nameTypes person
+apache-opennlp-2.0.0/bin/opennlp TokenNameFinderEvaluator -model en_ner_person.bin \
+	-data corpus_test.txt -nameTypes person
 ```
 
 You will see output like:
