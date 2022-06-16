@@ -12,7 +12,7 @@ gunzip -c apache-opennlp-2.0.0-bin.tar.gz | tar xvf -
 Download the CoNLL03 data set and unzip it:
 
 ```
-https://data.deepai.org/conll2003.zip
+wget https://data.deepai.org/conll2003.zip
 unzip conll2003.zip
 ```
 
@@ -28,14 +28,14 @@ apache-opennlp-2.0.0/bin/opennlp TokenNameFinderConverter conll03 -lang eng -typ
 apache-opennlp-2.0.0/bin/opennlp TokenNameFinderConverter conll03 -lang eng -types per -data test.txt > corpus_test.txt
 ```
 
-You will see output like `Execution time: 1.750 seconds` for both commands.
+You will see output like `Execution time: 0.136 seconds` for both commands.
 
 ### Train and Evaluate the Model
 
 Now train the model.
 
 ```
-apache-opennlp-2.0.0/bin/opennlp TokenNameFinderTrainer -model en_ner_person.bin -lang eng -data corpus_train.txt
+apache-opennlp-2.0.0/bin/opennlp TokenNameFinderTrainer -model en_ner_person.bin -lang eng -data corpus_train.txt -nameTypes person
 ```
 
 You will see output like:
@@ -81,31 +81,65 @@ done (1.465s)
 Wrote name finder model to
 path: /tmp/en_ner_person.bin
 
-Execution time: 45.903 seconds
+Execution time: 9.972 seconds
 ```
 
 Now evaluate the model:
 
 ```
-apache-opennlp-2.0.0/bin/opennlp TokenNameFinderEvaluator -model en_ner_person.bin -data corpus_test.txt
+apache-opennlp-2.0.0/bin/opennlp TokenNameFinderEvaluator -model en_ner_person.bin -data corpus_test.txt -nameTypes person
 ```
 
 You will see output like:
 
 ```
-Loading Token Name Finder model ... done (0.501s)
-current: 243.0 sent/s avg: 243.0 sent/s total: 299 sent
-current: 859.9 sent/s avg: 524.5 sent/s total: 1050 sent
-current: 1185.4 sent/s avg: 744.3 sent/s total: 2235 sent
+Loading Token Name Finder model ... done (0.067s)
 
 
-Average: 983.5 sent/s
+Average: 4680.2 sent/s
 Total: 3454 sent
-Runtime: 3.512s
+Runtime: 0.738s
 
 Evaluated 3453 samples with 1617 entities; found: 1472 entities; correct: 1370.
        TOTAL: precision:   93.07%;  recall:   84.72%; F1:   88.70%.
       person: precision:   93.07%;  recall:   84.72%; F1:   88.70%. [target: 1617; tp: 1370; fp: 102]
 
-Execution time: 4.495 seconds
+Execution time: 0.888 seconds
+```
+
+With detailed output from the report file:
+
+```
+=== Evaluation summary ===
+  Number of sentences:   3453
+    Min sentence size:      1
+    Max sentence size:    124
+Average sentence size:  13.45
+           Tags count:      3
+             Accuracy: 98.91%
+
+<-end> Evaluation Corpus Statistics
+
+=== Detailed Accuracy By Tag ===
+
+-----------------------------------------------------------------------------
+|          Tag | Errors |  Count |   % Err | Precision | Recall | F-Measure |
+-----------------------------------------------------------------------------
+| person-start |    243 |   1617 | 0.15    | 0.933     | 0.85   | 0.89      |
+|  person-cont |    114 |   1156 | 0.099   | 0.935     | 0.901  | 0.918     |
+|        other |    151 |  43662 | 0.003   | 0.992     | 0.997  | 0.994     |
+-----------------------------------------------------------------------------
+
+<-end> Tags with the highest number of errors
+
+=== Confusion matrix ===
+
+Tags with 100% accuracy:
+
+      a       b       c | Accuracy | <-- classified as
+ <43511>     58      93 |   -100%  |     a = other
+    109   <1042>      5 |   -100%  |     b = person-cont
+    229      14   <1374>|   -100%  |     c = person-start
+
+<-end> Confusion matrix
 ```
