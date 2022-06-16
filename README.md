@@ -1,10 +1,8 @@
 # Apache OpenNLP Benchmarks
 
-This repository is a collection of steps and benchmarks for Apache OpenNLP on data sets for common NLP tasks.
+This repository is an unofficial collection of steps and benchmarks for Apache OpenNLP on data sets for common NLP tasks.
 
-The purpose of this repository is to provide examples of how to train and evaluate Apache OpenNLP models and provide various performance data.
-
-These model training and evaluation scripts do not require GPUs.
+The purpose of this repository is to provide examples of how to train and evaluate Apache OpenNLP models and provide various performance data to help you determine if Apache OpenNLP is a good choice for your use-case.
 
 For more information on the commands contained in these files, refer to the [Apache OpenNLP documentation](https://opennlp.apache.org/docs/2.0.0/manual/opennlp.html) for the current version.
 

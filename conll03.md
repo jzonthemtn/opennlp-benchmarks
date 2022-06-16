@@ -1,8 +1,8 @@
 # OpenNLP Benchmarks for CoNLL03
 
-This document details how to use the CoNLL03 data to train and evaluate an Apache OpenNLP model to identify named person entities.
-
-These steps use Apache OpenNLP models introduced in Apache OpenNLP 1.0 and supported by all versions of Apache OpenNLP.
+This document details how to use the CoNLL03 data to train and evaluate an Apache OpenNLP model to identify named person entities. 
+These steps use Apache OpenNLP models introduced in Apache OpenNLP 1.0 and supported by all versions of Apache OpenNLP. 
+**This training and evaluation does not require a GPU.**
 
 ## Steps to Reproduce
 
