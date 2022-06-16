@@ -28,8 +28,8 @@ gunzip -c aclImdb_v1.tar.gz | tar xvf -
 Combine the positive and negative reviews into single separate files (each containing one review per line):
 
 ```
-awk '{print "negative\t" $0}' ./aclImdb/train/neg/*.txt > negative.txt
-awk '{print "negative\t" $0}' ./aclImdb/train/pos/*.txt > positive.txt
+awk '{print "negative " $0}' ./aclImdb/train/neg/*.txt > negative.txt
+awk '{print "positive " $0}' ./aclImdb/train/pos/*.txt > positive.txt
 cat negative.txt positive.txt > training.txt
 ```
 
@@ -37,9 +37,11 @@ The `training.txt` file should have 25,000 lines (reviews).
 
 Now do the same for the test data:
 
-awk '{print "negative\t" $0}' ./aclImdb/test/neg/*.txt > negative.txt
-awk '{print "negative\t" $0}' ./aclImdb/test/pos/*.txt > positive.txt
+```
+awk '{print "negative " $0}' ./aclImdb/test/neg/*.txt > negative.txt
+awk '{print "positive " $0}' ./aclImdb/test/pos/*.txt > positive.txt
 cat negative.txt positive.txt > test.txt
+```
 
 ## Train a Document Classification Model
 
@@ -100,15 +102,15 @@ apache-opennlp-2.0.0/bin/opennlp DoccatEvaluator -model reviews.bin -data test.t
 The output will be similar to:
 
 ```
-Loading Document Categorizer model ... done (0.089s)
-current: 16943.2 doc/s avg: 16943.2 doc/s total: 17356 doc
+Loading Document Categorizer model ... done (0.088s)
+current: 19192.4 doc/s avg: 19192.4 doc/s total: 19532 doc
 
 
-Average: 19143.2 doc/s 
+Average: 20560.0 doc/s 
 Total: 25001 doc
-Runtime: 1.306s
+Runtime: 1.216s
 
-Accuracy: 0.5308
+Accuracy: 0.85592
 Number of documents: 25000
-Execution time: 1.447 seconds
+Execution time: 1.356 seconds
 ```
